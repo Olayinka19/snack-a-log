@@ -46,54 +46,54 @@ function SnackNewForm() {
             required
           ></Form.Control>
         </Form.Group>
-        <Form.Group  >
-            <Form.Label htmlFor="name">Fiber</Form.Label>
-            <Form.Control
-              id="fiber"
-              type="text"
-              value={snack.fiber}
-              placeholder="0"
-              required
-              onChange={handleTextChange}
-            ></Form.Control>
-          </Form.Group>
-        <Form.Group  >
-            <Form.Label htmlFor="name">Protein</Form.Label>
-            <Form.Control
-              id="protein"
-              type="text"
-              value={snack.protein}
-              placeholder="0"
-              required
-              onChange={handleTextChange}
-            ></Form.Control>
-          </Form.Group>
-          <Form.Group  >
-            <Form.Label htmlFor="name">Added_Sugar</Form.Label>
-            <Form.Control
-              id="added_sugar"
-              value={snack.added_sugar}
-              type="text"
-              placeholder="0"
-              required
-              onChange={handleTextChange}
-            ></Form.Control>
-          </Form.Group>
-        <Form.Group  >
-            <Form.Label htmlFor="name">Image URL:</Form.Label>
-            <Form.Control
-              id="image"
-              value={snack.image}
-              pattern="http[s]*://.+"
-              type="text"
-              placeholder="http://"
-              required
-              onChange={handleTextChange}
-            ></Form.Control>
-          </Form.Group>
-          <Button variant="primary" type="submit" >
-            Submit
-          </Button>
+        <Form.Group>
+          <Form.Label htmlFor="name">Fiber</Form.Label>
+          <Form.Control
+            id="fiber"
+            type="text"
+            value={snack.fiber}
+            placeholder="0"
+            required
+            onChange={handleTextChange}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="name">Protein</Form.Label>
+          <Form.Control
+            id="protein"
+            type="text"
+            value={snack.protein}
+            placeholder="0"
+            required
+            onChange={handleTextChange}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="name">Added_Sugar</Form.Label>
+          <Form.Control
+            id="added_sugar"
+            value={snack.added_sugar}
+            type="text"
+            placeholder="0"
+            required
+            onChange={handleTextChange}
+          ></Form.Control>
+        </Form.Group>
+        <Form.Group>
+          <Form.Label htmlFor="name">Image URL:</Form.Label>
+          <Form.Control
+            id="image"
+            value={snack.image}
+            pattern="http[s]*://.+"
+            type="text"
+            placeholder="http://"
+            required
+            onChange={handleTextChange}
+          ></Form.Control>
+        </Form.Group>
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
       </Form>
     </div>
   );

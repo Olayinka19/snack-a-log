@@ -9,7 +9,7 @@ function Snacks() {
   useEffect(() => {
     axios
       .get(`${API}/snacks`)
-      .then((response) => setSnacks(response.data))
+      .then((response) => setSnacks(response.data.payload))
       .catch((c) => console.warn("catch", c));
   }, []);
   return (
