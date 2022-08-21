@@ -16,12 +16,11 @@ function SnackEditForm() {
     is_healthy: false,
     image: "",
   });
-  const updateSnack = () => {
+  const updateSnack = (updatedSnack) => {
     axios
-      .put(`${API}/snacks/${id}`, snack)
-      .then((response) => {
-        setSnack(response.data);
-        navigate(`/snacks/${id}`);
+      .put(`${API}/snacks/${id}`, updatedSnack)
+      .then(() => {
+      navigate(`/snacks/${id}`);
       })
       .catch((error) => console.log(error));
   };
@@ -30,7 +29,7 @@ function SnackEditForm() {
   };
   useEffect(() => {
     axios.get(`${API}/snacks/${id}`).then(
-      (response) => setSnack(response.data),
+      (response) => setSnack(response.data.payload),
       (error) => navigate(`/snacks`)
     );
   }, [id, navigate]);
