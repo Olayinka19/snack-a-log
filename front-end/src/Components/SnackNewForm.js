@@ -8,9 +8,9 @@ import Form from "react-bootstrap/Form";
 const API = process.env.REACT_APP_API_URL;
 function SnackNewForm() {
   let navigate = useNavigate();
-  const addSnack = () => {
+  const addSnack = (newSnack) => {
     axios
-      .post(`${API}/snacks, snack`)
+      .post(`${API}/snacks`, newSnack)
       .then((response) => navigate(`/snacks`))
       .catch((error) => console.log(error));
   };
@@ -47,10 +47,10 @@ function SnackNewForm() {
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="name">Fiber</Form.Label>
+          <Form.Label htmlFor="fiber">Fiber</Form.Label>
           <Form.Control
             id="fiber"
-            type="text"
+            type="number"
             value={snack.fiber}
             placeholder="0"
             required
@@ -58,10 +58,10 @@ function SnackNewForm() {
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="name">Protein</Form.Label>
+          <Form.Label htmlFor="protein">Protein</Form.Label>
           <Form.Control
             id="protein"
-            type="text"
+            type="number"
             value={snack.protein}
             placeholder="0"
             required
@@ -69,18 +69,18 @@ function SnackNewForm() {
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="name">Added_Sugar</Form.Label>
+          <Form.Label htmlFor="added_sugar">Added Sugar</Form.Label>
           <Form.Control
             id="added_sugar"
             value={snack.added_sugar}
-            type="text"
+            type="number"
             placeholder="0"
             required
             onChange={handleTextChange}
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="name">Image URL:</Form.Label>
+          <Form.Label for="image">Image</Form.Label>
           <Form.Control
             id="image"
             value={snack.image}
@@ -91,9 +91,7 @@ function SnackNewForm() {
             onChange={handleTextChange}
           ></Form.Control>
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
+       <input type="submit"/>
       </Form>
     </div>
   );

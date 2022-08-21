@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-
+import healthyFood from "../assets/heart-solid.png";
+import unhealthyFood from "../assets/heart-regular.png"
 function SnackDetails() {
   const [snack, setSnack] = useState([]);
   let { id } = useParams();
@@ -27,13 +28,15 @@ function SnackDetails() {
   return (
     <>
       <article>
-        <h3>
-          {snack.is_healthy ? <span>❤️</span> : <span>♡</span>} {snack.name}
-        </h3>
+        <aside>
+         {snack.is_healthy ? <img src = {healthyFood} alt="healthy food" /> : null } 
+        </aside>
+      <div>
         <img src={snack.image} alt={snack.name} height={200} width={200} />
         <h5>Protein: {snack.protein}</h5>
         <h5>Fiber: {snack.fiber}</h5>
         <h5>Added Sugar: {snack.added_sugar}</h5>
+       </div>
         <div className="showNavigation">
           <div>
             {" "}
