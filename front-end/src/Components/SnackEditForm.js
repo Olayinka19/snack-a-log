@@ -6,8 +6,8 @@ import { Button, Form } from "react-bootstrap";
 const API = process.env.REACT_APP_API_URL;
 
 function SnackEditForm() {
-  const { id } = useParams();
   const navigate = useNavigate();
+  const { id } = useParams();
   const [snack, setSnack] = useState({
     name: "",
     fiber: "",
@@ -28,17 +28,25 @@ function SnackEditForm() {
     setSnack({ ...snack, [event.target.id]: event.target.value });
   };
   useEffect(() => {
-    axios.get(`${API}/snacks/${id}`).then(
-      (response) => setSnack(response.data.payload),
+    axios.get(`${API}/snacks/${id}`)
+    .then((response) => setSnack(response.data.payload),
+    
       (error) => navigate(`/snacks`)
     );
   }, [id, navigate]);
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateSnack(snack.id);
+    updateSnack(snack, id)
+    navigate(`/snacks`)
   };
   return (
     <div className="Edit">
+      <p>Snack Health is determined by</p>
+        <ul>
+          <li>Protein is above 5</li>
+          <li>Or Fiber is above 5</li>
+          <li>and Sugar is less than 5</li>
+        </ul>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label htmlFor="name">Snack Name</Form.Label>
@@ -53,10 +61,10 @@ function SnackEditForm() {
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="name">Fiber</Form.Label>
+          <Form.Label htmlFor="fiber">Fiber</Form.Label>
           <Form.Control
             id="fiber"
-            type="text"
+            type="number"
             value={snack.fiber}
             placeholder="0"
             required
@@ -64,10 +72,10 @@ function SnackEditForm() {
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="name">Protein</Form.Label>
+          <Form.Label htmlFor="protein">Protein</Form.Label>
           <Form.Control
             id="protein"
-            type="text"
+            type="number"
             value={snack.protein}
             placeholder="0"
             required
@@ -75,18 +83,18 @@ function SnackEditForm() {
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="name">Added_Sugar</Form.Label>
+          <Form.Label htmlFor="added_sugar">Added Sugar</Form.Label>
           <Form.Control
             id="added_sugar"
             value={snack.added_sugar}
-            type="text"
+            type="number"
             placeholder="0"
             required
             onChange={handleTextChange}
           ></Form.Control>
         </Form.Group>
         <Form.Group>
-          <Form.Label htmlFor="name">Image URL:</Form.Label>
+          <Form.Label htmlFor="image">Image URL:</Form.Label>
           <Form.Control
             id="image"
             value={snack.image}
@@ -98,9 +106,7 @@ function SnackEditForm() {
           ></Form.Control>
         </Form.Group>
         <br />
-        <Button variaint="warning" type="submit">
-          Submit
-        </Button>
+        <input type="submit"/>
         <Link to={`/snacks/${id}`}>
           <Button variant="info">Nevermind!</Button>
         </Link>

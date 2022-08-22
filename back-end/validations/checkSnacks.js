@@ -1,57 +1,27 @@
 const checkName = (req, res, next) => {
-    console.log('name is being checked');
-    if (req.body.name) {
-      console.log("we've got a name here!");
-      next();
-    } else {
-      res.status(400).json({ error: 'We need a name...' });
-    }
-  };
-  const checkFiber = (req, res, next) => {
-    console.log('fiber is being checked');
-    if (req.body.fiber) {
-      console.log("we've got a name here!");
-      next();
-    } else {
-      res.status(400).json({ error: 'We need a name...' });
-    }
-  };
-  const checkProtein = (req, res, next) => {
-    console.log('protein is being checked');
-    if (req.body.protein) {
-      console.log("we've got a name here!");
-      next();
-    } else {
-      res.status(400).json({ error: 'We need a name...' });
-    }
-  };
+  req.body.name = req.body.name.toLowerCase();
+  let nameArr = req.body.name.split(" ");
 
-  const checkAdded_sugar = (req, res, next) => {
-    console.log('added_sugar is being checked');
-    if (req.body.added_sugar) {
-      console.log("we've got a name here!");
-      next();
-    } else {
-      res.status(400).json({ error: 'We need a name...' });
+  for (let i = 0; i < nameArr.length; i++) {
+    if (nameArr[i].length > 2) {
+      nameArr[i] = nameArr[i].charAt(0).toUpperCase() + nameArr[i].slice(1);
     }
-  };
+  }
+  req.body.name = nameArr.join(" ");
+  next();
 
-  const checkIs_healthy = (req, res, next) => {
-    console.log('is_healthy is being checked');
-    if (req.body.is_healthy) {
-      console.log("we've got a name here!");
-      next();
-    } else {
-      res.status(400).json({ error: 'We need a name...' });
-    }
-  };
-  const checkImage = (req, res, next) => {
-    console.log('image is being checked');
-    if (req.body.image) {
-      console.log("we've got a name here!");
-      next();
-    } else {
-      res.status(400).json({ error: 'We need a name...' });
-    }
-  };
-  module.exports = {checkName, checkFiber,  checkProtein , checkIs_healthy , checkImage}
+};
+
+const checkImage = (req, res, next) => {
+ 
+  if (!req.body.image) {
+    req.body.image =
+      "https://dummyimage.com/400x400/6e6c6e/e9e9f5.png&text=No+Image";
+    next();
+  } else {
+   
+    next();
+  }
+}
+;
+  module.exports = { checkImage, checkName}

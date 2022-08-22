@@ -33,6 +33,12 @@ function SnackNewForm() {
   };
   return (
     <div className="New">
+      <p>Snack Health is determined by</p>
+        <ul>
+          <li>Protein is above 5</li>
+          <li>Or Fiber is above 5</li>
+          <li>and Sugar is less than 5</li>
+        </ul>
       <Form onSubmit={handleSubmit}>
         <Form.Group>
           <Form.Label htmlFor="name">Snack Name</Form.Label>

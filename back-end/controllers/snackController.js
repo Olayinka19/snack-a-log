@@ -1,7 +1,7 @@
 const express = require('express');
 const snacks = express.Router();
 const {getAllSnacks, getSnack, createSnack, deleteSnack, updateSnack,} = require('../queries/snacks.js')
-const {checkName, checkFiber,  checkProtein , checkIs_healthy , checkImage} = require('../validations/checkSnacks.js');
+const {checkName,  checkImage} = require('../validations/checkSnacks.js');
 snacks.get('/', async (req, res) => {
     const allSnacks = await getAllSnacks();
     if(allSnacks) {
@@ -22,7 +22,7 @@ snacks.get('/:id', async (req, res) => {
     }
 })
 // Add checkName and stuffs here
-snacks.post('/', async (req, res) => {
+snacks.post('/', checkName, checkImage, async (req, res) => {
     try{
         const snack = await createSnack(req.body);
         res.json({payload: snack,success: true});
