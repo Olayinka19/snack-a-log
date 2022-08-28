@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import healthyFood from "../assets/heart-solid.png";
-import unhealthyFood from "../assets/heart-regular.png"
+// import unhealthyFood from "../assets/heart-regular.png"
 function SnackDetails() {
   const [snack, setSnack] = useState([]);
   let { id } = useParams();
